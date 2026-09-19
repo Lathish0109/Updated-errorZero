@@ -1,4 +1,4 @@
-# Connecting a Playwright project to ICore Bug Tracker
+# Connecting a Playwright project to ErrorZero
 
 This lets an external Playwright test suite -- running in any IDE, or in CI --
 file a bug directly into a project as soon as a human or a test author has
@@ -7,13 +7,13 @@ tracker with flaky-test noise).
 
 ## 1. Generate an API key
 
-In ICore Bug Tracker: **Settings → API Keys → Generate New Key** (admin only).
+In ErrorZero: **Settings → API Keys → Generate New Key** (admin only).
 Give it a name (e.g. `"Playwright CI"`) and pick the one project it reports
 into -- each key is scoped to exactly one project. Copy the key immediately;
 it's shown only once and stored elsewhere only as a hash.
 
 Store it as a secret in your Playwright project's environment
-(`ICORE_API_KEY`), never committed to source control.
+(`ERRORZERO_API_KEY`), never committed to source control.
 
 ## 2. Add a reporting helper
 
@@ -31,10 +31,10 @@ export async function reportBug(bug: {
   actualResult?: string;
   additionalContext?: string;
 }) {
-  const res = await fetch(`${process.env.ICORE_BASE_URL}/api/v1/bugs`, {
+  const res = await fetch(`${process.env.ERRORZERO_BASE_URL}/api/v1/bugs`, {
     method: "POST",
     headers: {
-      Authorization: `Bearer ${process.env.ICORE_API_KEY}`,
+      Authorization: `Bearer ${process.env.ERRORZERO_API_KEY}`,
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
@@ -50,7 +50,7 @@ export async function reportBug(bug: {
 
   if (!res.ok) {
     const { error } = await res.json().catch(() => ({ error: res.statusText }));
-    throw new Error(`Failed to report bug to ICore: ${error}`);
+    throw new Error(`Failed to report bug to ErrorZero: ${error}`);
   }
 
   return res.json() as Promise<{ id: string; displayId: string }>;

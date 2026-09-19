@@ -1,6 +1,6 @@
 // Safety net for the RLS (tests/rls) and E2E (tests/e2e) suites. If a run
 // crashes before its own cleanup/globalTeardown runs, this sweeps any
-// TEST_RLS/TEST_E2E-tagged rows and icoretest.local auth users left behind.
+// TEST_RLS/TEST_E2E-tagged rows and errorzerotest.local auth users left behind.
 // Safe to run any time -- it's a no-op if there's nothing to clean up.
 //
 // Usage: node scripts/cleanup-test-data.mjs
@@ -70,7 +70,7 @@ async function main() {
   }
 
   const { data: users } = await supabase.auth.admin.listUsers();
-  const testUsers = (users?.users ?? []).filter((u) => u.email?.endsWith("icoretest.local"));
+  const testUsers = (users?.users ?? []).filter((u) => u.email?.endsWith("errorzerotest.local"));
   for (const user of testUsers) {
     await supabase.auth.admin.deleteUser(user.id);
     removed += 1;

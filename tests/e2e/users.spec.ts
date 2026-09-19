@@ -103,7 +103,7 @@ test.describe("Users List (ULIST)", () => {
 test.describe("Create User (UNEW)", () => {
   test("UNEW-01/05: valid submission creates the user, and they can log in", async ({ browser }) => {
     const { context, page } = await pageAs(browser, "admin");
-    const email = "test-e2e-created-user@icoretest.local";
+    const email = "test-e2e-created-user@errorzerotest.local";
     createdEmails.push(email);
 
     await page.goto("/users/new");
@@ -140,7 +140,7 @@ test.describe("Create User (UNEW)", () => {
     const { context, page } = await pageAs(browser, "admin");
     await page.goto("/users/new");
     await page.getByLabel(/full name/i).fill("Duplicate attempt");
-    await page.getByLabel(/work email/i).fill("test-e2e-developer@icoretest.local");
+    await page.getByLabel(/work email/i).fill("test-e2e-developer@errorzerotest.local");
     await page.getByLabel(/^password/i).fill("WhateverPass1");
     await page.getByLabel(/^role/i).click();
     await page.getByRole("option", { name: "Tester", exact: true }).click();
@@ -162,7 +162,7 @@ test.describe("Create User (UNEW)", () => {
 
 test.describe("Edit User (UEDIT)", () => {
   test("UEDIT-01: updating name/role/status saves", async ({ browser }) => {
-    const email = "test-e2e-edit-target@icoretest.local";
+    const email = "test-e2e-edit-target@errorzerotest.local";
     createdEmails.push(email);
     const service = serviceClient();
     const created = await createTestUser(service, email, "EditTarget!2026");
@@ -186,7 +186,7 @@ test.describe("Edit User (UEDIT)", () => {
   test("UEDIT-02/03: blank password keeps the old one; a new password replaces it", async ({
     browser,
   }) => {
-    const email = "test-e2e-password-target@icoretest.local";
+    const email = "test-e2e-password-target@errorzerotest.local";
     createdEmails.push(email);
     const service = serviceClient();
     const created = await createTestUser(service, email, "OriginalPass!1");
@@ -238,7 +238,7 @@ test.describe("Edit User (UEDIT)", () => {
     // Full login-block would require signing them out mid-session too;
     // this confirms the documented, directly-testable effect: an inactive
     // user drops out of getAssignableUsers() immediately.
-    const email = "test-e2e-deactivate-target@icoretest.local";
+    const email = "test-e2e-deactivate-target@errorzerotest.local";
     createdEmails.push(email);
     const service = serviceClient();
     const created = await createTestUser(service, email, "DeactivateMe!1");

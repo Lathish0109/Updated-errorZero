@@ -93,7 +93,7 @@ export function UserForm({
             id="email"
             name="email"
             type="email"
-            placeholder="jane.smith@icore.app"
+            placeholder="jane.smith@errorzero.app"
             defaultValue={defaultValues?.email}
             required
             disabled={mode === "edit"}

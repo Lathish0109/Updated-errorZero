@@ -288,7 +288,7 @@ describe("Profiles (the admin-seeded model's actual enforcement)", () => {
       const { error } = await client.from("profiles").insert({
         id: "00000000-0000-0000-0000-000000000000",
         full_name: "should not exist",
-        email: "nobody@icoretest.local",
+        email: "nobody@errorzerotest.local",
         role: "viewer",
       });
       expect(error, `${label} should not be able to insert a profile`).not.toBeNull();

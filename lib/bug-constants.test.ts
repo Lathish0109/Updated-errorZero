@@ -4,7 +4,7 @@ import { displayId, isAllowedAttachment, MAX_ATTACHMENT_SIZE_BYTES } from "@/lib
 
 describe("displayId", () => {
   it("joins the project key and sequence number", () => {
-    expect(displayId("ICORE", 42)).toBe("ICORE-42");
+    expect(displayId("DEMO", 42)).toBe("DEMO-42");
   });
 });
 

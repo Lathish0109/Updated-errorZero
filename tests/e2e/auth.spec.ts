@@ -43,7 +43,7 @@ test.describe("Login", () => {
     page,
   }) => {
     await page.goto("/login");
-    await page.getByLabel(/work email/i).fill("nobody-at-all@icoretest.local");
+    await page.getByLabel(/work email/i).fill("nobody-at-all@errorzerotest.local");
     await page.getByLabel(/^password$/i).fill("whatever-password");
     await page.getByRole("button", { name: /login/i }).click();
     await expect(page.getByText(/invalid email or password/i)).toBeVisible();

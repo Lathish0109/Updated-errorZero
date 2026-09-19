@@ -27,7 +27,7 @@ function loadEnvLocal() {
 
 loadEnvLocal();
 
-const BOT_EMAIL = "automation@icoretracker.local";
+const BOT_EMAIL = "automation@errorzerotracker.local";
 const BOT_NAME = "Automation";
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;

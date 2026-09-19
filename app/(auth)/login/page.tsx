@@ -1,7 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { useActionState } from "react";
-import { ArrowRight, Bug, Lock, Mail } from "lucide-react";
+import { ArrowRight, Lock, Mail } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -18,7 +19,8 @@ export default function LoginPage() {
       <div className="border-border bg-card w-full max-w-md rounded-xl border p-8 shadow-sm">
         <div className="text-center">
           <h1 className="text-foreground flex items-center justify-center gap-2 text-2xl font-bold">
-            <Bug className="text-primary size-6" /> ICore Tracker
+            <Image src="/logo.png" alt="ErrorZero" width={32} height={32} className="rounded-sm" />
+            ErrorZero
           </h1>
           <p className="text-muted-foreground mt-1.5 text-sm">
             Precision Engineering &amp; Bug Tracking
@@ -37,7 +39,7 @@ export default function LoginPage() {
                 name="email"
                 type="email"
                 autoComplete="email"
-                placeholder="engineer@icore.dev"
+                placeholder="engineer@errorzero.dev"
                 className="h-10 pl-9"
                 required
               />

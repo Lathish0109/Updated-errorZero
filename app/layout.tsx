@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ICore Bug Tracker",
+  title: "ErrorZero",
   description: "Bug tracking and issue management for software teams.",
 };
 

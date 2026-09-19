@@ -86,7 +86,7 @@ test.describe("Profile (PROFILE)", () => {
   test("PROFILE-02: resetting your own password with the correct current password works", async ({
     browser,
   }) => {
-    const email = "test-e2e-profile-target@icoretest.local";
+    const email = "test-e2e-profile-target@errorzerotest.local";
     const service = serviceClient();
     const { data: existing } = await service.auth.admin.listUsers();
     const stale = existing?.users.find((u) => u.email === email);

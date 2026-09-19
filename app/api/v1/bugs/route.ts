@@ -4,7 +4,7 @@ import { hashApiKey } from "@/lib/api-keys";
 import { displayId, type Bug } from "@/lib/bug-constants";
 import { createAdminClient } from "@/lib/supabase/admin";
 
-const AUTOMATION_BOT_EMAIL = "automation@icoretracker.local";
+const AUTOMATION_BOT_EMAIL = "automation@errorzerotracker.local";
 
 const VALID_SEVERITIES: Bug["severity"][] = ["critical", "high", "medium", "low"];
 const VALID_PRIORITIES: Bug["priority"][] = ["p1", "p2", "p3", "p4"];

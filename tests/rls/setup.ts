@@ -66,10 +66,10 @@ export const TEST_PREFIX = "TEST_RLS";
 const TEST_PASSWORD = "RlsTest!2026x";
 
 const TEST_USER_DEFS = {
-  manager: { email: "test-rls-manager@icoretest.local", role: "manager" as const },
-  developer: { email: "test-rls-developer@icoretest.local", role: "developer" as const },
-  tester: { email: "test-rls-tester@icoretest.local", role: "tester" as const },
-  viewer: { email: "test-rls-viewer@icoretest.local", role: "viewer" as const },
+  manager: { email: "test-rls-manager@errorzerotest.local", role: "manager" as const },
+  developer: { email: "test-rls-developer@errorzerotest.local", role: "developer" as const },
+  tester: { email: "test-rls-tester@errorzerotest.local", role: "tester" as const },
+  viewer: { email: "test-rls-viewer@errorzerotest.local", role: "viewer" as const },
 };
 
 export type TestUserKey = keyof typeof TEST_USER_DEFS;

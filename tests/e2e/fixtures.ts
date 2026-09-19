@@ -25,10 +25,10 @@ export const E2E_PROJECT_KEY = "TE2E";
 export const E2E_USER_PASSWORD = "E2eTest!2026x";
 
 export const E2E_USER_DEFS = {
-  manager: { email: "test-e2e-manager@icoretest.local", role: "manager" as const },
-  developer: { email: "test-e2e-developer@icoretest.local", role: "developer" as const },
-  tester: { email: "test-e2e-tester@icoretest.local", role: "tester" as const },
-  viewer: { email: "test-e2e-viewer@icoretest.local", role: "viewer" as const },
+  manager: { email: "test-e2e-manager@errorzerotest.local", role: "manager" as const },
+  developer: { email: "test-e2e-developer@errorzerotest.local", role: "developer" as const },
+  tester: { email: "test-e2e-tester@errorzerotest.local", role: "tester" as const },
+  viewer: { email: "test-e2e-viewer@errorzerotest.local", role: "viewer" as const },
 };
 
 export type E2eUserKey = keyof typeof E2E_USER_DEFS;

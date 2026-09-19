@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import {
@@ -85,9 +86,12 @@ export function AppSidebar({
         )}
       >
         <div className="flex items-start justify-between px-5 pt-6 pb-5">
-          <div>
-            <span className="text-primary text-lg font-bold">ICore Tracker</span>
-            <p className="text-muted-foreground text-xs">QA Engineering</p>
+          <div className="flex items-center gap-2">
+            <Image src="/logo.png" alt="ErrorZero" width={28} height={28} className="rounded-sm" />
+            <div>
+              <span className="text-primary text-lg font-bold">ErrorZero</span>
+              <p className="text-muted-foreground text-xs">QA Engineering</p>
+            </div>
           </div>
           <Button
             variant="ghost"

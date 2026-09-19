@@ -124,10 +124,10 @@ export async function reportBug(bug: {
   actualResult?: string;
   additionalContext?: string;
 }) {
-  const res = await fetch(\`\${process.env.ICORE_BASE_URL}/api/v1/bugs\`, {
+  const res = await fetch(\`\${process.env.ERRORZERO_BASE_URL}/api/v1/bugs\`, {
     method: "POST",
     headers: {
-      Authorization: \`Bearer \${process.env.ICORE_API_KEY}\`,
+      Authorization: \`Bearer \${process.env.ERRORZERO_API_KEY}\`,
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
@@ -143,7 +143,7 @@ export async function reportBug(bug: {
 
   if (!res.ok) {
     const { error } = await res.json().catch(() => ({ error: res.statusText }));
-    throw new Error(\`Failed to report bug to ICore: \${error}\`);
+    throw new Error(\`Failed to report bug to ErrorZero: \${error}\`);
   }
 
   return res.json() as Promise<{ id: string; displayId: string }>;
@@ -177,8 +177,8 @@ test("checkout button is disabled after adding an out-of-stock item", async ({ p
 });`;
 
 const ENV_CODE = `# .env (Playwright project, never committed)
-ICORE_BASE_URL=https://your-icore-deployment.example.com
-ICORE_API_KEY=ibt_live_...`;
+ERRORZERO_BASE_URL=https://your-errorzero-deployment.example.com
+ERRORZERO_API_KEY=ezt_live_...`;
 
 const FIELDS: { field: string; required: boolean; notes: string }[] = [
   { field: "title", required: true, notes: "" },
