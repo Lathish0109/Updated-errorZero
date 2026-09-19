@@ -90,7 +90,7 @@ export function AppSidebar({
             <Image src="/logo.png" alt="ErrorZero" width={28} height={28} className="rounded-sm" />
             <div>
               <span className="text-primary text-lg font-bold">ErrorZero</span>
-              <p className="text-muted-foreground text-xs">QA Engineering</p>
+              <p className="text-muted-foreground text-xs">Bug Tracker &amp; Management</p>
             </div>
           </div>
           <Button
@@ -138,7 +138,11 @@ export function AppSidebar({
           })}
         </nav>
 
-        <div className="border-border space-y-1 border-t px-3 py-4">
+        <div className="border-border space-y-3 border-t px-3 py-4">
+          <div className="px-3">
+            <p className="text-foreground truncate text-sm font-medium">{profile.full_name}</p>
+            <p className="text-muted-foreground text-xs capitalize">{profile.role}</p>
+          </div>
           <button
             type="button"
             onClick={handleLogout}
