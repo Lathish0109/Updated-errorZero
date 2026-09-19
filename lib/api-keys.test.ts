@@ -5,7 +5,7 @@ import { generateApiKey, hashApiKey, looksLikeApiKey } from "@/lib/api-keys";
 describe("generateApiKey", () => {
   it("produces a key with the expected prefix", () => {
     const { key } = generateApiKey();
-    expect(key.startsWith("ibt_live_")).toBe(true);
+    expect(key.startsWith("ez_live_")).toBe(true);
   });
 
   it("produces a different key on every call", () => {
@@ -29,17 +29,17 @@ describe("generateApiKey", () => {
 
 describe("hashApiKey", () => {
   it("is deterministic", () => {
-    expect(hashApiKey("ibt_live_abc")).toBe(hashApiKey("ibt_live_abc"));
+    expect(hashApiKey("ez_live_abc")).toBe(hashApiKey("ez_live_abc"));
   });
 
   it("different keys hash differently", () => {
-    expect(hashApiKey("ibt_live_abc")).not.toBe(hashApiKey("ibt_live_xyz"));
+    expect(hashApiKey("ez_live_abc")).not.toBe(hashApiKey("ez_live_xyz"));
   });
 });
 
 describe("looksLikeApiKey", () => {
   it("accepts a well-formed key", () => {
-    expect(looksLikeApiKey("ibt_live_somesecret")).toBe(true);
+    expect(looksLikeApiKey("ez_live_somesecret")).toBe(true);
   });
 
   it("rejects values without the prefix", () => {
@@ -48,6 +48,6 @@ describe("looksLikeApiKey", () => {
   });
 
   it("rejects the bare prefix with no secret", () => {
-    expect(looksLikeApiKey("ibt_live_")).toBe(false);
+    expect(looksLikeApiKey("ez_live_")).toBe(false);
   });
 });

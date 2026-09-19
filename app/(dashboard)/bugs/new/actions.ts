@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
+import { isSafeImageUrl } from "@/lib/bug-constants";
 import { addAttachment, createBug, setBugImageFromFile, type BugLabel } from "@/services/bugs";
 import type { Tables } from "@/types/database";
 
@@ -27,6 +28,9 @@ export async function createBugFormAction(
 
   if (!title || !projectId || !severity || !steps) {
     return { error: "Title, project, severity, and steps to reproduce are required." };
+  }
+  if (imageUrl && !isSafeImageUrl(imageUrl)) {
+    return { error: "Image URL must be a valid http:// or https:// link." };
   }
 
   const { error, bugId } = await createBug({

@@ -1,6 +1,21 @@
 import { createAdminClient } from "@/lib/supabase/admin";
 import { createClient } from "@/lib/supabase/server";
+import { getCurrentProfile } from "@/services/profile";
 import type { Tables } from "@/types/database";
+
+// createUserAccount/updateUserAccount use the service-role client (required
+// to call Supabase's admin.auth.admin API), which bypasses RLS entirely --
+// so, unlike every other mutation in this app, this check is the *only*
+// thing standing between a request and full account takeover. Per the
+// Next.js Server Actions guidance, page/layout gating is not a security
+// boundary: an action is reachable by anyone who can POST to it directly,
+// regardless of which UI route is hidden from them.
+async function assertCallerIsAdmin() {
+  const profile = await getCurrentProfile();
+  if (profile?.role !== "admin") {
+    throw new Error("Only an admin can manage user accounts.");
+  }
+}
 
 export type Profile = Tables<"profiles">;
 
@@ -90,6 +105,8 @@ type CreateUserInput = {
 };
 
 export async function createUserAccount(input: CreateUserInput) {
+  await assertCallerIsAdmin();
+
   const admin = createAdminClient();
 
   const { data: authData, error: authError } = await admin.auth.admin.createUser({
@@ -134,6 +151,8 @@ type UpdateUserInput = {
 };
 
 export async function updateUserAccount(input: UpdateUserInput) {
+  await assertCallerIsAdmin();
+
   const admin = createAdminClient();
 
   if (input.password) {

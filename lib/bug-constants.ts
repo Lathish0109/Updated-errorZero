@@ -68,3 +68,14 @@ export function isAllowedAttachment(file: { type: string; size: number }) {
   // .log); allow that rather than rejecting valid attachments.
   return file.type === "" || ALLOWED_ATTACHMENT_TYPES.includes(file.type);
 }
+
+// Rejects non-http(s) schemes (e.g. javascript:) so a pasted image URL can
+// never be rendered back out as a clickable link that executes script.
+export function isSafeImageUrl(url: string): boolean {
+  try {
+    const parsed = new URL(url);
+    return parsed.protocol === "http:" || parsed.protocol === "https:";
+  } catch {
+    return false;
+  }
+}

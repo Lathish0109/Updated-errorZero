@@ -2,7 +2,7 @@ import { createHash, randomBytes } from "node:crypto";
 
 // Displayed prefix lets an admin tell keys apart in the UI without ever
 // storing or re-displaying the secret itself.
-const KEY_PREFIX = "ibt_live_";
+const KEY_PREFIX = "ez_live_";
 const PREFIX_DISPLAY_CHARS = 8;
 
 export function generateApiKey(): { key: string; hash: string; prefix: string } {

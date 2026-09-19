@@ -73,7 +73,7 @@ test.describe("Automation API keys (AKEY)", () => {
     await generateKey(page, keyName);
 
     const revealedKey = (await page.getByTestId("revealed-api-key").textContent())?.trim();
-    expect(revealedKey).toMatch(/^ibt_live_/);
+    expect(revealedKey).toMatch(/^ez_live_/);
 
     await page.getByRole("button", { name: /i've copied it/i }).click();
     await expect(page.getByText("Your new API key")).not.toBeVisible();

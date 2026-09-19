@@ -338,7 +338,7 @@ describe("API Keys (external automation integration, admin-only trust boundary)"
       const { error } = await client.from("api_keys").insert({
         name: `${TEST_PREFIX} should not be created by ${label}`,
         key_hash: `${TEST_PREFIX}-${label}-hash`,
-        key_prefix: "ibt_live_",
+        key_prefix: "ez_live_",
         project_id: fixtures.projectAId,
         created_by: fixtures.users[label as TestUserKey].id,
       });
@@ -352,7 +352,7 @@ describe("API Keys (external automation integration, admin-only trust boundary)"
       .insert({
         name: `${TEST_PREFIX} admin-created key`,
         key_hash: `${TEST_PREFIX}-admin-hash`,
-        key_prefix: "ibt_live_",
+        key_prefix: "ez_live_",
         project_id: fixtures.projectAId,
         created_by: fixtures.users.developer.id,
       })
